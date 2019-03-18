@@ -1,0 +1,11 @@
+1. Yes, I try to make my AI more effective in playing Othello.
+
+2. I have already accomplished a more effective AI.
+
+3. I made a "game_AI" method in class Othello to implement AI. In this method, computer will choose a legal move which will flip as much tiles as possible in this step.
+
+   To implement this, I used "update_info" method in class Othello firstly to find out all legal moves and recorded the number of tiles who would flip if I made that move. Then in "game_AI" method, computer will use that record and made it's decide.
+
+4. In 8X8 games, I am always beated by my AI.
+
+5. I could make my AI to test all possibilities in two steps. To implement this, I need to copy the on-going game to AI and test all legal moves and it's opposite's possible reactions to find out the move in which AI will get the most score (or lose the least). 

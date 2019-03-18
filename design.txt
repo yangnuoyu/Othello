@@ -1,0 +1,155 @@
+class Othello:
+	def __init__(self, board, game_controller):
+		'''Initializing the game with class Board, class Tile, class GameController'''
+		self.board = board
+		self.TILE_SIZE = self.board.WIDTH / self.board.SIZE
+		self.GRID_SIZE = self.board.WIDTH / self.board.SIZE
+		self.game_start()
+		self.gc = game_controller
+		self.is_black = True
+
+	def game_start(self):
+		'''put 4 tiles in the middle of the board'''
+		self.board.grils[self.board.SIZE//2][self.board.SIZE//2] = Tile(self.TILE_SIZE, False)
+		self.board.grils[self.board.SIZE//2 + 1][self.board.SIZE//2] = Tile(self.TILE_SIZE, True)
+		self.board.grils[self.board.SIZE//2][self.board.SIZE//2 + 1] = Tile(self.TILE_SIZE, True)
+		self.board.grils[self.board.SIZE//2 + 1][self.board.SIZE//2 + 1] = Tile(self.TILE_SIZE, False)
+
+	def update(self):
+		'''update game after mousepressed'''
+		if mousepressed:
+			self.put_on()
+			self.flip()
+			if self.is_finished():
+				self.judge_game()
+			self.display()
+
+	def put_on(self, mouseX, mouseY):
+		'''put tile on the board'''
+		# put a tile on the board if press a valid grid
+		# do nothing if it is not valid 
+		if self.valid(mouseX, mouseY, self.is_black):
+			self.board.put_on(mouseX, mouseY, self.is_black)
+			self.is_black = not self.is_black
+
+	def flip(self):
+		'''flip tiles if necessary'''
+		# for tile in self.board:
+	     		# if self.is_between(tile):
+				# tile.change_color()
+
+	def is_finished(self):
+		'''make sure the game is finished'''
+		if len(tiles) == self.board.size ** 2:
+			return True
+		if self.valid_grids() == []
+			return True
+		return False
+
+	def judge_game(self):
+		'''judge the game'''
+		w = sum(1 for tile in self.tiles if tile.color = "white")
+		b = sum(1 for tile in self.tiles if tile.color = "black")
+		if w > b:
+			self.gc.white_win = True
+		elif w < b:
+			self.gc.black_win = True
+
+	def display(self):
+		'''show game on the screen'''
+		self.board.display()
+		for tile in self.tiles:
+			tile.display()
+		self.gc.display()
+	
+	def valid_grids(self):
+		'''return a list of grids on which player can put tile'''
+		
+		# ans = []
+		# for each self.board.grids[i][j]
+		# if self.is_black:
+			# checker = this grid 
+			# while the upper grid is filled and the tile is white:
+				# checker = the upper grid
+			# if the upper grid is filled and the tile is black:
+				#ans.append((i, j, 'black'))
+		# do above code in two colors and 8 directions	
+ 		pass
+
+	def valid(self, x, y, is_black):
+		'''return True if the grill on (x,y) is valid for player black/white'''
+		if is_black:
+			return (x//self.GRID_SIZE , y//self.GRID_SIZE, 'black') in self.valid_grids()
+		else:
+			return (x//self.GRID_SIZE , y//self.GRID_SIZE, 'white') in self.valid_grids()
+
+	def is_between(tile):
+		'''return True if the tile is between two tiles with the other color'''
+
+		# if tile.is_black:
+			# checker_1 = upper grid
+			# checker_2 = lower grid  
+			# while the grid of checker_1 is filled and the tile is black:
+				# checker_1 = the upper grid
+			# while the grid of checker_2 is filled and the tile is black:
+				# checker_2 = the lower grid
+			# if the checker_1 and checker_2 are filled and tile are white:
+				#return True
+		# do above code in two colors and 4 directions
+  		pass
+	
+
+
+
+class Board:
+	def __init__(self,width, size):
+		self.WIDTH = width
+		self.SIZE = size
+		self.grids =[[None] * self.SIZE for _ in range(self.SIZE)]
+	
+	def put_on(self, x, y, is_black):
+		'''put a tile on the grid which (x, y) is at'''
+		pass
+
+	def display(self)
+		'''draw the board'''
+		pass
+
+
+class Tile:
+	def __init__(self, diameter, is_black)
+		self.DIAMETER = diameter
+		self.is_black = is_black
+	
+	def change_color(self):
+		'''flip the tile'''
+		self.is_black = not is_black
+	
+	def display(self)
+		'''draw the tile'''
+		pass 
+
+
+
+class GameController:
+    """Maintains the state of the game."""
+    def __init__(self, WIDTH, HEIGHT):
+        self.WIDTH = WIDTH
+        self.HEIGHT = HEIGHT
+        self.black_wins = False
+        self.white_wins = False
+
+    def update(self):
+        """Carries out necessary actions if black or white wins"""
+        if self.black_wins:
+            fill(255, 255, 255)
+            textSize(50)
+            text("BLACK WINS!!!", self.WIDTH/2 - 140, self.HEIGHT/2)
+        elif self.white_wins:
+            fill(0, 0, 0)
+            textSize(50)
+            text("WHITE WINS!!!", self.WIDTH/2 - 140, self.HEIGHT/2)
+        else:
+            fill(0, 255, 0)
+            textSize(50)
+            text("DRAW", self.WIDTH/2 - 100, self.HEIGHT/2)

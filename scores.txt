@@ -1,0 +1,16 @@
+unknown 44
+aaa 12
+ddd 12
+aaa 12
+bbb 10
+ccc 9
+aaa 9
+ppp 9
+unknown 8
+unknown 12
+unknown 12
+unknown 9
+unknown 12
+unknown 12
+asdf 24
+qwe 19
